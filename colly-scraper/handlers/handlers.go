@@ -26,6 +26,12 @@ func GetAll() []models.CoffeeResponse {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(response.Body)
 	responseData, err := io.ReadAll(response.Body)
 	if err != nil {
 		log.Fatal(err)
@@ -46,7 +52,12 @@ func Add(coffee models.Coffee) {
 	if err != nil {
 		log.Fatalf("An error occured %v", err)
 	}
-	response.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(response.Body)
 }
 
 func Delete(coffee models.CoffeeResponse) {
