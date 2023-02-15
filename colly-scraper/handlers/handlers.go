@@ -61,7 +61,7 @@ func Add(coffee models.Coffee) {
 }
 
 func Delete(coffee models.CoffeeResponse) {
-	url := fmt.Sprintf("%s%s%s/delete", baseURL, deleteEndpoint, strconv.Itoa(coffee.ID))
+	url := fmt.Sprintf("%s%s%s/deletepermamently", baseURL, deleteEndpoint, strconv.Itoa(coffee.ID))
 	req, err := http.NewRequest(http.MethodDelete, url, nil)
 	if err != nil {
 		return

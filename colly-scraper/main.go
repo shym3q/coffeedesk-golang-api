@@ -12,7 +12,7 @@ func main() {
 	for _, lastCoffee := range lastData {
 		upToDate := false
 		for _, newCoffee := range s.ScrapedData {
-			if lastCoffee.Name == newCoffee.Name {
+			if (lastCoffee.Name == newCoffee.Name) && (lastCoffee.Image == newCoffee.Image) {
 				upToDate = true
 				break
 			}

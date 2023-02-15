@@ -31,7 +31,7 @@ func Get(c *gin.Context) {
 
 	var coffee models.Coffee
 	result := config.DB.First(&coffee, id)
-	if result.Error != nil { 
+	if result.Error != nil {
 		c.Status(400)
 		return
 	}
